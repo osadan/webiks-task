@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 
 @Injectable()
+
 export class msmService {
 	constructor(){
 		this.categories = [
