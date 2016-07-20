@@ -8,7 +8,7 @@ export const routes = [
     component: Hello
   },
   {
-  	path: 'categroy/:id',
+  	path: 'category/:id',
   	component:categoryView
   }
 

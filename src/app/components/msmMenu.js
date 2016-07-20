@@ -10,9 +10,10 @@ import {ROUTER_DIRECTIVES} from '@angular/router';
   directives: [ROUTER_DIRECTIVES]
 })
 
-export class msmMenu {
+export class msmMenu implements OnInit {
 	constructor(msmService: msmService){
-		this.categories = msmService.defaultCategories;
+		console.log('a',msmService.getCategories());
+		this.categories = msmService.getCategories();
 	}
 	ngOnInit() {
 		console.log(msmService);
