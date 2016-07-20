@@ -1,4 +1,6 @@
 <div>
 	menu.html
 </div>
-{{categories}}
+<li *ngFor="let item of categories; let i = index">
+	<a [routerLink]="['/category/',item.id]" routerLinkActive="active">{{item.name}}</a>
+</li>
