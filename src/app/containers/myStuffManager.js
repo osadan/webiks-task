@@ -1,13 +1,13 @@
 import {Component} from '@angular/core';
 import {msmBreadcrumbs} from '../components/msmBreadcrumbs';
 import {msmMenu} from '../components/msmMenu';
-import {msmContent} from '../components/msmContent';
+import {ROUTER_DIRECTIVES} from '@angular/router';
 
 
 @Component({
   selector: 'myStuffManager',
   template: require('./myStuffManager.html'),
-  directives: [msmBreadcrumbs, msmContent,msmMenu]
+  directives: [ROUTER_DIRECTIVES,msmBreadcrumbs,msmMenu]
 
 })
 

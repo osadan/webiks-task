@@ -7,12 +7,13 @@ import './index.scss';
 
 import {provideRouter} from '@angular/router';
 import {enableProdMode} from '@angular/core';
-import {routes, Root} from './routes';
+import {routes} from './routes';
+import {myStuffManager} from './app/containers/myStuffManager'
 
 if (process.env.NODE_ENV === 'production') {
   enableProdMode();
 }
 
-bootstrap(Root, [
+bootstrap(myStuffManager, [
   provideRouter(routes)
 ]);

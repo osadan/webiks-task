@@ -1,21 +1,11 @@
-import {Component} from '@angular/core';
-import {ROUTER_DIRECTIVES} from '@angular/router';
-import {myStuffManager} from './app/containers/myStuffManager';
-import {categoryView} from './app/containers/categoryView';
-
-@Component({
-  selector: 'root',
-  template: '<router-outlet></router-outlet>',
-  directives: [ROUTER_DIRECTIVES]
-})
-
-export class Root {
-}
+import {myStuffManager} from './app/containers/myStuffManager'
+import {categoryView} from './app/containers/categoryView'
+import {Hello} from './app/hello';
 
 export const routes = [
   {
     path: '',
-    component: myStuffManager
+    component: Hello
   },
   {
   	path: 'categroy/:id',

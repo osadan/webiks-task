@@ -20,6 +20,9 @@ section.main{
 		nav {
 			flex-basic:20%;
 			border:1px solid green;
+			li {
+				list-style-type:none;
+			}
 		}
 		section{
 			flex-basic:80%;
