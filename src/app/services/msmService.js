@@ -5,10 +5,17 @@ import { Injectable } from '@angular/core';
 export class msmService {
 	constructor(){
 		this.data = [
-			{'id': 1,'name': 'Sports',content:[]},
-			{'id': 2,'name': 'Science',content:[] },
-			{'id': 3,'name': 'Art',content: []}
+			{'id': 1,'name': 'Sports'},
+			{'id': 2,'name': 'Science' },
+			{'id': 3,'name': 'Art'}
 		];	
+		this.contents = [
+
+		]
+
+		//this.getContents = this.getContents.bind(this);
+		//this.saveContent = this.saveContent.bind(this);
+		
 	}
 	
 	//categories CRUD functions 
@@ -20,8 +27,12 @@ export class msmService {
 		
 	getCategory(id) {
 		let result = this.data.find(item => item.id == id);		
+		console.log('getCategory',result);
+		console.log('this.data get category',this.data);
 		return result;
 	}
+
+
 
 	saveCategory (name){
 
@@ -37,6 +48,10 @@ export class msmService {
 
 	//content CRUD functions
 	getContents(categoryId){
+		console.log('getContents',this.contents);
+		let result =  this.contents.find(item => item.categoryId == categoryId );
+		console.log(result);	
+		return result;
 
 	}
 
@@ -45,11 +60,18 @@ export class msmService {
 	}
 
 	saveContent(categoryId,data){
-		let category =this.data.find(item => item.id == categoryId);
-		let length = category.content.length;
-		let contentId = parseInt(categoryId + "" + ++length);
-		category.content.push({id: contentId,title: data.title,description: data.description});
-		console.log(this.data);
+		console.log('saveContent',this.contents);
+		let length = this.contents.length;
+		let contentId =  ++length;
+		
+		this.contents.push({
+							id : contentId, 
+							title: data.title,
+							description: data.description,
+							categoryId: categoryId
+						});
+		
+		return contentId;
 
 	}
 

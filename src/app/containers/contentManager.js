@@ -8,7 +8,6 @@ import { ROUTER_DIRECTIVES } from '@angular/router';
 @Component({
     selector: 'contentManager',
     template: require('./contentManager.html'),
-    providers: [msmService],
     directives: [ROUTER_DIRECTIVES]
 
 })
@@ -32,7 +31,7 @@ export class contentManager implements OnInit, OnDestroy {
             this.action = params['action'];
             this.categoryId = +params['id'];
             this.category = this.service.getCategory(this.categoryId);
-            console.log(this.category);
+            
             
             //this.name = this.service.getCategory(id).name;
             //this.service.getHero(id).then(hero => this.hero = hero);
@@ -43,9 +42,10 @@ export class contentManager implements OnInit, OnDestroy {
         //console.log(data);
         //console.log(this.vm);
         console.log(this.content);
-        this.service.saveContent(this.categoryId,this.content);
+        let contentId = this.service.saveContent(this.categoryId,this.content);
         this.content ={};
         event.preventDefault();
+        //this.router.navigateByUrl('category/' + this.categoryId + '/content/' + contentId + '/view');
         ///debugger;
     }
     cancelForm(){
