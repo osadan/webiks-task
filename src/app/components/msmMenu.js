@@ -12,11 +12,12 @@ import {ROUTER_DIRECTIVES} from '@angular/router';
 
 export class msmMenu implements OnInit {
 	constructor(msmService: msmService){
-		console.log('a',msmService.getCategories());
-		this.categories = msmService.getCategories();
+		
+		this.service = msmService;
+		this.categories = this.service.getCategories();
 	}
 	ngOnInit() {
-		console.log(msmService);
 		
+		//this.categories = this.service.getCategories();	
 	}
 }

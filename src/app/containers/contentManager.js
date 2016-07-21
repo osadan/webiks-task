@@ -29,8 +29,11 @@ export class contentManager implements OnInit, OnDestroy {
     ngOnInit() {
         this.sub = this.route.params.subscribe(params => {
             //let id = +params['id']; // (+) converts string 'id' to a number
-            console.log(params);
             this.action = params['action'];
+            this.categoryId = +params['id'];
+            this.category = this.service.getCategory(this.categoryId);
+            console.log(this.category);
+            
             //this.name = this.service.getCategory(id).name;
             //this.service.getHero(id).then(hero => this.hero = hero);
         });
@@ -40,6 +43,8 @@ export class contentManager implements OnInit, OnDestroy {
         //console.log(data);
         //console.log(this.vm);
         console.log(this.content);
+        this.service.saveContent(this.categoryId,this.content);
+        this.content ={};
         event.preventDefault();
         ///debugger;
     }
