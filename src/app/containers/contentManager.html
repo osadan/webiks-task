@@ -1,1 +1,22 @@
-<div>content manager</div>
+<div class="content-view">
+    <h2>Cotnent Manager -  {{action}}</h2>
+    <form #f="ngForm" (ngSubmit)="saveContent(f.value)">
+        <div class="form">
+            <div class='buttons-bar'>
+                <button type='submit'>save</button>
+                <button (click)="cancelForm()">cancel</button>
+            </div>
+            <div class='form-content'>
+                <div class="form-content">
+                    <label for='title'>Title</label>
+                    <input id='title' type="title" placeholder="Please enter content title" [(ngModel)]="content.title" required />
+                </div>
+                <div class="form-content">
+                    <label for="description">Description</label>
+                    <textarea id='description' [(ngModel)]='content.description' required>
+                    </textarea>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

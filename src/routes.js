@@ -14,7 +14,7 @@ export const routes = [
   	as: 'Categories'
   },
   {
-  	path: 'category/:id/content/create',
+  	path: 'category/:id/content/:action',
   	component: contentManager,
   	as: 'Content'
   }

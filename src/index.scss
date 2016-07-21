@@ -1,6 +1,9 @@
 body {
   background-color: lightgrey;
 }
+h2{
+		font-size:16px;
+	}
 section.main{
 		display:flex;
 		flex-direction:column;
@@ -30,7 +33,23 @@ section.main{
 		}
 }
 .category-view{
-	h2{
-		font-size:16px;
+	
+}
+
+.content-view{
+	.form{
+		display:flex;
+		flex-direction:column;
 	}
+	.buttons-bar{
+		button{
+			margin:5px;
+		}
+	}
+	.form-content{
+		display:flex;
+		flex-direction:column;
+	}
+
+
 }
