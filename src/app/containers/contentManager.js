@@ -13,43 +13,62 @@ import{msmService} from '../services/msmService';
 })
 
 export class contentManager implements OnInit, OnDestroy {
+    
     constructor(route: ActivatedRoute, router: Router, msmService: msmService) {
         console.log('category view constructor');
         this.route = route;
         this.router = router;
         this.service = msmService;
         this.content = {};
-        /*this.contentForm = fb.group({
-            title: ["", Validators.required],
-            description: ["", Validators.required]
-        });*/
-
     }
+
     ngOnInit() {
         this.sub = this.route.params.subscribe(params => {
-            //let id = +params['id']; // (+) converts string 'id' to a number
+            
             this.action = params['action'];
-            this.categoryId = +params['id'];
+            if(!this.action){
+                this.action = 'create';
+            }
+            
+            this.categoryId = params['id'];
             this.category = this.service.getCategory(this.categoryId);
             
-            
-            //this.name = this.service.getCategory(id).name;
-            //this.service.getHero(id).then(hero => this.hero = hero);
+            this.contentId = params['content-id'];            
+            if(this.contentId !== undefined){
+                
+                this.content = this.category.content.find(item => item.id == this.contentId);
+                console.log(this.content);
+            }
+
         });
 
     }
-    saveContent(data) {
-        //console.log(data);
-        //console.log(this.vm);
-        console.log(this.content);
-        let contentId = this.service.saveContent(this.categoryId,this.content);
-        this.content ={};
+
+    saveContent() {
+        
+        if(this.contentId){
+            this.service.updateContent(this.contentId,this.content);
+        }else{
+            this.contentId = this.service.saveContent(this.categoryId,this.content);
+            this.content ={};
+        }
+
         event.preventDefault();
-        //this.router.navigateByUrl('category/' + this.categoryId + '/content/' + contentId + '/view');
-        ///debugger;
+        this.router.navigate(['/category', this.categoryId,'/content',this.contentId,'/view']);
     }
+
+    editContent(contentId) {
+        this.router.navigate(['/category', this.categoryId,'/content',this.contentId,'/edit']);
+    }
+
     cancelForm(){
     	this.content = {};
     	event.preventDefault();
+    }
+
+    deleteContent() {
+        this.service.removeContent(this.contentId);
+        event.preventDefault();
+        this.router.navigate(['/category', this.categoryId]);
     }
 }

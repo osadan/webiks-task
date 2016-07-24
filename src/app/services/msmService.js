@@ -53,13 +53,17 @@ export class msmService {
 	}
 
 	getContent(contentId){
+		let categoryId = contentId.split('@')[0];
+		let category  = this.getCategory(categoryId);
+		let content = category.content.find(item => item.id == contentId);
+		return content;
 
 	}
 
 	saveContent(categoryId,data){
 		let category = this.getCategory(categoryId);
 		let length = category.content.length;
-		let contentId = categoryId + "" + ++length;
+		let contentId = categoryId + "@" + ++length;
 		category.content.push({
 							id : contentId, 
 							title: data.title,
@@ -70,12 +74,20 @@ export class msmService {
 
 	}
 
-	changeContent (contentId,data){
-
+	updateContent (contentId,data){
+		let content = this.getContent(contentId);
+		content.title = data.title;
+		content.description = data.description;
+		return contentId;
 	}
 
 	removeContent(contentId){
-
+		let categoryId = contentId.split('@')[0];
+		let category  = this.getCategory(categoryId);
+		let index = category.content.findIndex(item => item.id == contentId);
+		category.content.splice(index,1);
+		return;
+		
 	}
 
 
