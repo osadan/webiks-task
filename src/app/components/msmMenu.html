@@ -6,7 +6,7 @@
 		<a [routerLink]="['/category',item.id]" routerLinkActive="active">{{item.name}}</a>
 		<ul>
 			<li *ngFor="let content of categoryContent(item.id);let j = index">
-				content.title
+				{{content.title}}
 			</li>
 		</ul>
 	</li>
