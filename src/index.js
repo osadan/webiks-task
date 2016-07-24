@@ -9,6 +9,7 @@ import {provideRouter} from '@angular/router';
 import {enableProdMode} from '@angular/core';
 import {routes} from './routes';
 import {myStuffManager} from './app/containers/myStuffManager';
+import {msmService} from './app/services/msmService';
 //import { provideForms } from '@angular/forms'; 
 
 if (process.env.NODE_ENV === 'production') {
@@ -17,5 +18,6 @@ if (process.env.NODE_ENV === 'production') {
 
 bootstrap(myStuffManager, [
   provideRouter(routes)
+  ,msmService
   //,provideForms()
 ]);
