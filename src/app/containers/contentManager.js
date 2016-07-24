@@ -35,9 +35,7 @@ export class contentManager implements OnInit, OnDestroy {
             
             this.contentId = params['content-id'];            
             if(this.contentId !== undefined){
-                
                 this.content = this.category.content.find(item => item.id == this.contentId);
-                console.log(this.content);
             }
 
         });

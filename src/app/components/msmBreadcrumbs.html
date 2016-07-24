@@ -1,3 +1,7 @@
 <div class="breadcrumbs">
-	msmBreadCrumbs
+	<ul>
+		<li>{{category?.name}}</li>
+		<li *ngIf='title'>{{title}}</li>
+		<li *ngIf='action'>{{action}}</li>
+	</ul>
 </div>

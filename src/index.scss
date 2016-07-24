@@ -53,3 +53,19 @@ section.main{
 
 
 }
+.breadcrumbs ul{
+ 	display:flex;
+
+ 	li {
+		list-style-type:none;
+		margin-right:5px;
+		&:before{
+			content: "\2192";
+			margin-right:2px;
+		}
+		&:first-child:before{
+			content: ' ';
+		}
+	}
+	
+}
