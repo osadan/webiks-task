@@ -1,10 +1,7 @@
-<div>
-	menu.html
-</div>
 <ul>
 	<li *ngFor="let item of categories; let i = index">
 		<a [routerLink]="['/category',item.id]" routerLinkActive="active">{{item.name}}</a>
-		<ul>
+		<ul class='content-list'>
 			<li *ngFor="let content of categoryContent(item.id);let j = index">
 				<a [routerLink]="['/category/',item.id,'/content/',content.id,'view']" routerLinkActive="active">{{content.title}}</a>
 			</li>

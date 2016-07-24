@@ -26,6 +26,17 @@ section.main{
 			li {
 				list-style-type:none;
 			}
+			ul.content-list {
+				display:none;
+			}
+			a.active + ul.content-list {
+				display:block;
+				a.active{
+					background:black;
+					color:white;
+				}
+			}
+
 		}
 		section{
 			flex-basic:80%;
