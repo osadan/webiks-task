@@ -1,6 +1,26 @@
-<section class='category-view'>
-<h2>Category {{name}}</h2>
-<div class="content">
+<section class='category-view' *ngIf="action !== 'manage'">
+	<h2>Category {{name}}</h2>
 	<a [routerLink]="['/category/',id,'/content']" routerLinkActive="active" >create content</a>
-</div>
+</section>
+<section class='category-manage' *ngIf="action === 'manage'">
+	<h2>Category Manager</h2>
+	<div class='insert-new-category'>
+		<label >Insert new category</label>
+		<input id='new-category' [(ngModel)]="newCategory" />
+		<a (click)='saveCategory()'>save</a>
+	</div>
+	<ul>
+		<li *ngFor='let item of categories; let i = index'>
+			<div>
+				<span>{{item.name}}</span>
+				<a (click)='editCategory(item.id)'>edit</a>,
+				<a (click)='removeCategory(item.id)'>remove</a>
+			</div>
+			<div *ngIf="edits[item.id]">
+				<input id='edit-category' [(ngModel)]='editCategoryValue' />
+				<a (click)='updateCategory(item.id)'>update</a>
+			</div>	
+		</li>
+	</ul>
+
 </section>

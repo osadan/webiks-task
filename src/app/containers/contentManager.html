@@ -1,10 +1,8 @@
 <div class="content-view">
     <h2>{{category.name}} - Cotnent Manager -  {{action}}</h2>
-    <div *ngIf='action == "view"'>
+    <div *ngIf='action == "view"' class='view-display'>
         <h3>{{content?.title}}</h3>
-        <div class="buttons-bar">
-            <button (click)='editContent(content?.id)'>edit</button>
-        </div>
+        <a (click)='editContent(content?.id)'>edit</a>
         <div>
             <p>{{content?.description}}</p>
         </div>
@@ -17,7 +15,7 @@
                     <button *ngIf='action == "create"' (click)="cancelForm()">cancel</button>
                     <button  *ngIf='action == "edit"' (click)="deleteContent(content?.id)">delete</button>
                 </div>
-                <div class='form-content'>
+                <div class='form-content-item'>
                     <div class="form-content">
                         <label for='title'>Title</label>
                         <input id='title' type="title" placeholder="Please enter content title" [(ngModel)]="content.title" required />

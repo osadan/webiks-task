@@ -1,7 +1,9 @@
 import { Injectable } from '@angular/core';
 
+/**
+ * main service for the webiks assignment
+ */
 @Injectable()
-
 export class msmService {
     constructor() {
         console.log('msmService constructor');
@@ -15,23 +17,26 @@ export class msmService {
     //categories CRUD functions 
     getCategories() {
         let result = this.data.map(item => {
-            return { 'id': item.id, 'name': item.name }; });
-        //console.log(result);
+            return { 'id': item.id, 'name': item.name }; 
+        });
         return result;
     }
 
     getCategory(id) {
         let result = this.data.find(item => item.id == id);
+        
         return result;
     }
 
     saveCategory(name) {
     	let id = this.data.length + 1;
-    	this.data.push({
+    	
+        this.data.push({
     		id: id,
     		name: name,
     		content: []
     	})
+        return id;
     }
 
     updateCategory(id, name) {
@@ -53,17 +58,14 @@ export class msmService {
     }
 
     getContent(contentId) {
-        
         let categoryId = contentId.split('@')[0];
         let category = this.getCategory(categoryId);
         let content = category.content.find(item => item.id == contentId);
         
         return content;
-
     }
 
     saveContent(categoryId, data) {
-        
         let category = this.getCategory(categoryId);
         let length = category.content.length;
         let contentId = categoryId + "@" + ++length;
@@ -78,7 +80,6 @@ export class msmService {
 	}
 
     updateContent(contentId, data) {
-        
         let content = this.getContent(contentId);
         
         content.title = data.title;
@@ -88,7 +89,6 @@ export class msmService {
     }
 
     removeContent(contentId) {
-        
         let categoryId = contentId.split('@')[0];
         let category = this.getCategory(categoryId);
         let index = category.content.findIndex(item => item.id == contentId);
@@ -96,6 +96,5 @@ export class msmService {
         category.content.splice(index, 1);
         
         return;
-
-    }
+   }
 }

@@ -7,14 +7,6 @@ export const routes = [
 	 {
         path: 'category/:id',
         component: categoryManager,
-        /*children: [{
-                
-        	    children: [{
-	                path: ':action',
-	                component: contentManager
-	            }]
-        	}
-        ]*/
     },
     {
         path: 'category/:id/content',
@@ -23,6 +15,10 @@ export const routes = [
     {
     	path: 'category/:id/content/:content-id/:action',
         component: contentManager
+    },
+    {
+        path: 'categories',
+        component: categoryManager
     },
     {
         path: '',
