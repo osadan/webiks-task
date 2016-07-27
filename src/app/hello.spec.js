@@ -12,7 +12,7 @@ describe('hello component', () => {
       .then(fixture => {
         fixture.detectChanges();
         const hello = fixture.nativeElement;
-        expect(hello.querySelector('h1').textContent).toBe('Hello Angular 2 World!');
+        expect(hello.querySelector('h2').textContent).toBe('Hello Angular 2 World!');
       });
   })));
 });
